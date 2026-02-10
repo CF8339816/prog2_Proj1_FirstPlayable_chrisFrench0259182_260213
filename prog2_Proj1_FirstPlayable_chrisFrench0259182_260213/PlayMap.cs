@@ -7,19 +7,17 @@ using System.Threading.Tasks;
 
 namespace prog2_Proj1_FirstPlayable_chrisFrench0259182_260213
 {
-    internal class PlayMap
+   public class PlayMap
     {
 
-        private char[,] grid;
-        public int Width { get; private set; }
-        public int Height { get; private set; }
+     
         string filepath1 = "map1.txt";
         string filepath2 = "map2.txt";
         public string[] Maps;
         public void _playMap()
         {
-           
-              Directory.GetCurrentDirectory();
+
+            //Directory.GetCurrentDirectory();
             try
             {
                 Maps = File.ReadAllLines(filepath1);

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace prog2_Proj1_FirstPlayable_chrisFrench0259182_260213
 {
-    //internal class Enemy : Character
+    //public class Enemy : Character
     //{
 
 
