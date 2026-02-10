@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Character.cs" />
     <Compile Include="Enemy.cs" />
+    <Compile Include="Map.cs" />
     <Compile Include="PlayMap.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
@@ -55,8 +56,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="map1.txt" />
-    <Content Include="map2.txt" />
+    <Content Include="map1.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="map2.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

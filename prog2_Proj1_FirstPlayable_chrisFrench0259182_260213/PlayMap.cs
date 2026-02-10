@@ -17,7 +17,7 @@ namespace prog2_Proj1_FirstPlayable_chrisFrench0259182_260213
         public void _playMap()
         {
 
-            //Directory.GetCurrentDirectory();
+         
             try
             {
                 Maps = File.ReadAllLines(filepath1);

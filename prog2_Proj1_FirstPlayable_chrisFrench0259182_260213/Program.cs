@@ -10,9 +10,9 @@ namespace prog2_Proj1_FirstPlayable_chrisFrench0259182_260213
     {
         static void Main(string[] args)
         {
-         PlayMap map = new PlayMap();
+         Map map = new Map();
 
-            map._playMap();
+            map.Map();// use a loader to set the map to be used.
 
         }
     }
