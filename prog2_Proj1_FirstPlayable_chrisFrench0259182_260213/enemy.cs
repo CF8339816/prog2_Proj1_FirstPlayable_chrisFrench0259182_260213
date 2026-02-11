@@ -6,11 +6,15 @@ using System.Threading.Tasks;
 
 namespace prog2_Proj1_FirstPlayable_chrisFrench0259182_260213
 {
-    //public class Enemy : Character
-    //{
+    public class Enemy : Character
+    {
+        public void enlSpawnLoc()
+    {
+        base._x = 3;
+        base._y = 3;
+    }
 
 
 
-
-    //}
+   }
 }

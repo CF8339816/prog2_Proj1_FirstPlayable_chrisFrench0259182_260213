@@ -46,7 +46,6 @@
     <Compile Include="Character.cs" />
     <Compile Include="Enemy.cs" />
     <Compile Include="LoadMap.cs" />
-    <Compile Include="PlayMap.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

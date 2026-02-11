@@ -6,17 +6,18 @@ using System.Threading.Tasks;
 
 namespace prog2_Proj1_FirstPlayable_chrisFrench0259182_260213
 {
-    abstract class Character
+    public class Character
     {
-        public int X { get; set; }
-        public int Y { get; set; }
-        public char Symbol { get; protected set; }
-        public HealthSystem Health { get; }
+        public int _x { get; set; }
+        public int _y { get; set; }
+        public int _attack { get; set; }
+        public char _symbol { get; protected set; }
+        public HealthSystem _health { get; }
 
         protected Character(int x, int y, char symbol, int hp)
         {
-            X = x; Y = y; Symbol = symbol;
-            Health = new HealthSystem(hp);
+            _x = x; _y = y; _symbol = symbol;
+            _health = new HealthSystem(hp);
         }
 
 
