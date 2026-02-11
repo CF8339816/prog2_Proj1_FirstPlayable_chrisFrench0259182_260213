@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace prog2_Proj1_FirstPlayable_chrisFrench0259182_260213
 {
-    internal class Map
+    internal class LoadMap
     {
         /*  Array of strings for the map data
 
@@ -44,6 +44,12 @@ namespace prog2_Proj1_FirstPlayable_chrisFrench0259182_260213
                             case '#': // WALL
                                 Console.ForegroundColor = ConsoleColor.Gray;
                                 break;
+                            case '%': // Lava
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                break;
+                            case 'G': // Goal
+                                Console.ForegroundColor = ConsoleColor.Cyan;
+                                break;
 
                             case '|': //Border
                                 Console.ForegroundColor = ConsoleColor.Yellow;
@@ -77,3 +83,4 @@ namespace prog2_Proj1_FirstPlayable_chrisFrench0259182_260213
 
         }
     }
+}
