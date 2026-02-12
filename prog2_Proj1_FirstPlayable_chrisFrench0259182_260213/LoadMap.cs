@@ -22,7 +22,7 @@ namespace prog2_Proj1_FirstPlayable_chrisFrench0259182_260213
         string filepath1 = "map1.txt";
         string filepath2 = "map2.txt";
         public string[] Maps;
-
+        
 
         public void MapLoader()
         {
@@ -82,5 +82,33 @@ namespace prog2_Proj1_FirstPlayable_chrisFrench0259182_260213
 
 
         }
-    }
+
+
+        static bool CanMoveTo(int tarMapX, int tarMapY)
+        {
+            if (tarMapY >= 0 && tarMapY < Maps.Length && tarMapX >= 0 && tarMapX < Maps[tarMapY].Length)
+            {
+                char tarTile = Maps[tarMapY][tarMapX];
+
+                switch (tarTile)
+                {
+                    case '#': //defines un traversable
+                    case '@':
+                    case '&':
+
+                        return false;
+
+                    case ' ':  //verifies traversable
+                    
+                    case '%':
+                        return true;
+
+                    default:
+                        return true;
+                }
+            }
+            return false;
+
+
+        }
 }

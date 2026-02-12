@@ -12,12 +12,20 @@ namespace prog2_Proj1_FirstPlayable_chrisFrench0259182_260213
         public int _y { get; set; }
         public int _attack { get; set; }
         public char _symbol { get; protected set; }
-        public HealthSystem _health { get; }
+        public int _health { get; set; }
 
-        protected Character(int x, int y, char symbol, int hp)
+        public ConsoleColor _color;
+
+        public (int, int) _min_max_x = (1, 55);
+        public (int, int) _min_max_y = (1, 29);
+        protected Character(int x, int y, int attack, char symbol, int hp, ConsoleColor color)
         {
-            _x = x; _y = y; _symbol = symbol;
-            _health = new HealthSystem(hp);
+            _x = x; 
+            _y = y;
+            _attack = attack;
+            _symbol = symbol;
+            _health = hp;
+            _color = color;
         }
 
 
