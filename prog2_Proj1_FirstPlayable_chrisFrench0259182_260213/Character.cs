@@ -17,7 +17,7 @@ namespace prog2_Proj1_FirstPlayable_chrisFrench0259182_260213
         public ConsoleColor _color;
 
         public (int, int) _min_max_x = (1, 55);
-        public (int, int) _min_max_y = (1, 29);
+        public (int, int) _min_max_y = (1, 24);
         protected Character(int x, int y, int attack, char symbol, int hp, ConsoleColor color)
         {
             _x = x; 

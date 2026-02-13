@@ -6,30 +6,32 @@ using System.Threading.Tasks;
 
 namespace prog2_Proj1_FirstPlayable_chrisFrench0259182_260213
 {
+
     public class Enemy : Character
     {
-        public int Xenemy;
-        public int Yenemy;
-
-
-        public void enlSpawnLoc()
+       
+        public Enemy(int x, int y, int attack, char symbol, int hp, ConsoleColor color)
+            : base(x, y, attack, symbol, hp, color)
         {
-            base._x = Xenemy;
-            base._y = Yenemy;
-            base._symbol = '&';
-            base._health = 25;
-            base._attack = 10;
-            base._color = ConsoleColor.Green;
         }
 
+       
+        private static Random enRando = new Random();
 
-        Random xRanddo = new Random();
+        public void RandomizeSpawn()
+        {
+            
+            _x = enRando.Next(_min_max_x.Item1, _min_max_x.Item2 + 1);
+            _y = enRando.Next(_min_max_y.Item1, _min_max_y.Item2 + 1);
 
-        Random yRanddo = new Random();
-
-        Xenemy = xRanddo(4-50);
-        Yenemy = yRanddo(2-29);
-
-
+            
+            _health = 25;
+            _attack = 10;
+        }
     }
+
+
+
+
+
 }

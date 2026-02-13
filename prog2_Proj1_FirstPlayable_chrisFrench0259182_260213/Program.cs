@@ -6,152 +6,120 @@ using System.Threading.Tasks;
 
 namespace prog2_Proj1_FirstPlayable_chrisFrench0259182_260213
 {
+
     class Program
     {
-        static string player;
-        static int p1_x_input;
-        static int p1_y_input;
-        static int p1_x_pos;
-        static int p1_y_pos;
-
-        static int p1_Old_X;
-        static int p1_Old_Y;
-        static string enemy;
-        static int enemy_x_pos;
-        static int enemy_y_pos;
-        static int enemy_Old_X;
-        static int enemy_Old_Y;
+       
+        static Player player = new Player(3, 3, 15, '!', 50, ConsoleColor.Blue);
+        static Enemy enemy = new Enemy(50, 4, 10, '&', 25, ConsoleColor.Green);
+        static LoadMap map = new LoadMap();
+        static bool isPlaying = true;
 
         static void Main(string[] args)
         {
-            LoadMap map = new LoadMap();
-
-            map.MapLoader();// use a loader to set the map to be used.
+            Console.CursorVisible = false;
+            map.MapLoader(); 
 
             while (isPlaying)
             {
-                inCombat = false;
-                CanMoveTo(mapXs, mapYs);
-                DrawEnemy();
-                //DrawEnemyAtCurrentPos();
+               
+                MovePlayer();
+                MoveEnemy();
 
-                //if ((DateTime.Now - lastEnemyMoveTime).TotalMilliseconds >= enemyMoveSpeedMs)
-                //{
-                if (!inCombat)
-                {
-               
-                    MoveEnemy();
-                    //        lastEnemyMoveTime = DateTime.Now; // Reset the timer
-                }
-                //}
-               
-                DrawPlayer();
-               
-
+                DrawEntities();
             }
-
-
-        }
-
-
-
-
-
-
-
-        static void DrawPlayer()
-        {
-
-            Player player = new Player(3, 3, 15, '@', 50, ConsoleColor.Blue); // sets player spawn and colouur            Console.SetCursorPosition(player.Position.x, player.Position.y);
-
-            Console.ForegroundColor = player.Color;
-
-            Console.Write("@");
-
-
-            //Console.SetCursorPosition(player.Position._x, player.Position._y);
-
-            //Console.ForegroundColor = player.Color;
-
-            //Console.Write("@");
-
-
         }
 
         static void MovePlayer()
         {
-            p1_x_input = 0;
-            p1_y_input = 0;
+            if (!Console.KeyAvailable) return;
 
+            int dx = 0, dy = 0;
             ConsoleKey input = Console.ReadKey(true).Key;
 
-            if (input == ConsoleKey.A) p1_x_input = -1;
-            if (input == ConsoleKey.D) p1_x_input = 1;
-            if (input == ConsoleKey.W) p1_y_input = -1;
-            if (input == ConsoleKey.S) p1_y_input = 1;
+            if (input == ConsoleKey.A) dx = -1;
+            if (input == ConsoleKey.D) dx = 1;
+            if (input == ConsoleKey.W) dy = -1;
+            if (input == ConsoleKey.S) dy = 1;
 
+            int nextX = player._x + dx;
+            int nextY = player._y + dy;
 
-            int nextX = p1_x_pos + p1_x_input;
-            int nextY = p1_y_pos + p1_y_input;
+            if (map.CanMoveTo(nextX, nextY))
+            {                
+                Console.SetCursorPosition(player._x, player._y);
+                
+                char oldTile = map.Maps[player._y][player._x];
+                WriteTileWithColor(oldTile);
 
-            if (_canMoveTo = true)
-            {
-                p1_Old_X = p1_x_pos;
-                p1_Old_Y = p1_y_pos;
+             
+                player._x = nextX;
+                player._y = nextY;
+
+              
+                if (map.Maps[player._y][player._x] == '%')
+                {
+                    player._health -= 30;
+                 
+                    if (player._health <= 0) isPlaying = false;
+                }
             }
-            else
-            {
-                p1_x_input = 0;
-                p1_y_input = 0;
-            }
-
         }
-    }
 
-
-
-        public static void DrawEnemy()
+        static void WriteTileWithColor(char tile)
         {
+            if (tile == '%') Console.ForegroundColor = ConsoleColor.Red;
+            else if (tile == '#') Console.ForegroundColor = ConsoleColor.Gray;
+            else Console.ForegroundColor = ConsoleColor.White;
 
-            Enemy enemy = new Enemy(3, 3, 15, '&', 50, ConsoleColor.Green);
-            //Console.SetCursorPosition(enemy.Position.x, enemy.Position.y);
-
-            Console.ForegroundColor = enemy.Color;
-
-            Console.Write("&");
-
-
-
+            Console.Write(tile);
+            Console.ResetColor();
         }
 
         static void MoveEnemy()
         {
+            int nextX = enemy._x;
+            int nextY = enemy._y;
 
-            if (p1_x_pos > enemy_x_pos)
+          
+            if (player._x > enemy._x) nextX++;
+            else if (player._x < enemy._x) nextX--;
+            if (player._y > enemy._y) nextY++;
+            else if (player._y < enemy._y) nextY--;
+
+            
+            char targetTile = map.Maps[nextY][nextX];
+            if (map.CanMoveTo(nextX, nextY) && targetTile != '%' && targetTile != '!')
             {
-                enemy_x_pos++;
-            }
-            if (p1_x_pos < enemy_x_pos)
-            {
-                enemy_x_pos--;
-            }
-            if (p1_y_pos > enemy_y_pos)
-            {
-                enemy_y_pos++;
-            }
-            if (p1_y_pos < enemy_y_pos)
-            {
-                enemy_y_pos--;
+                Console.SetCursorPosition(enemy._x, enemy._y);
+                Console.Write(" "); 
+
+                enemy._x = nextX;
+                enemy._y = nextY;
             }
         }
 
+        static void DrawEntities()
+        {
+           
+            Console.SetCursorPosition(enemy._x, enemy._y);
+            Console.ForegroundColor = enemy._color;
+            Console.Write(enemy._symbol);
 
+           
+            Console.SetCursorPosition(player._x, player._y);
+            Console.ForegroundColor = player._color;
+            Console.Write(player._symbol);
 
-
-
-
-
-
-
+            Console.ResetColor();
+        }
     }
+
+
+
+
+
+
+
+   
 }

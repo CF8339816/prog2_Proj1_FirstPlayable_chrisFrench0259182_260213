@@ -7,39 +7,31 @@ using System.Threading.Tasks;
 
 namespace prog2_Proj1_FirstPlayable_chrisFrench0259182_260213
 {
+
     public class Player : Character
     {
-        
-        public void plSpawnLoc()
+        public Player(int x, int y, int attack,char symbol, int hp, ConsoleColor color) : base(x, y, attack: 20, symbol: '!', hp: 50, color : ConsoleColor.Blue)
         {
-            base._x = 3;
-            base._y = 3;
-            base._symbol = '@';
-            base._health = 50;
-            base._attack = 15;
-            base._color = ConsoleColor.Blue;
+
+
         }
 
-        //public Player(Position position, ConsoleColor color)// established variables for  player locaTIUON AND COLOUR
-        //{
-        //    Position = position;
-        //    Color = color;
-        //    //Console.Write(" ");
-        //}
 
-    }
+        //private static Random plRando = new Random();
 
+      
 
-    //public struct Position
-    //{
-        
+        public void Move(int plMoveX, int plMoveY)
+        {
+            int newPlMoveX = _x + plMoveX;
+            int newPlMoveY = _y + plMoveY;
 
-    //    public Position(int x, int y)// gets the player position
-    //    {
-    //        this._x = x;
-    //        this._y = y;
-    //    }
-
+            
+            if (newPlMoveX >= _min_max_x.Item1 && newPlMoveX <= _min_max_x.Item2) _x = newPlMoveX;
+            if (newPlMoveY >= _min_max_y.Item1 && newPlMoveY <= _min_max_y.Item2) _y = newPlMoveY;
+        }
+    
+    
 
     }
 
