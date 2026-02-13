@@ -10,7 +10,7 @@ namespace prog2_Proj1_FirstPlayable_chrisFrench0259182_260213
 
     public class Player : Character
     {
-        public Player(int x, int y, int attack,char symbol, int hp, ConsoleColor color) : base(x, y, attack: 20, symbol: '!', hp: 50, color : ConsoleColor.Blue)
+        public Player(string Name, int x, int y, int attack,char symbol, int hp, ConsoleColor color) : base(Name,x, y, attack: 20, symbol: '!', hp: 50, color : ConsoleColor.Blue)
         {
 
 
@@ -21,7 +21,7 @@ namespace prog2_Proj1_FirstPlayable_chrisFrench0259182_260213
 
       
 
-        public void Move(int plMoveX, int plMoveY)
+        public void Move(int plMoveX, int plMoveY)// sets up move for input
         {
             int newPlMoveX = _x + plMoveX;
             int newPlMoveY = _y + plMoveY;

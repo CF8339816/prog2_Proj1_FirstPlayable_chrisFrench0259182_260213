@@ -8,6 +8,8 @@ namespace prog2_Proj1_FirstPlayable_chrisFrench0259182_260213
 {
     public class Character
     {
+
+        public string _name {  get; set; }  
         public int _x { get; set; }
         public int _y { get; set; }
         public int _attack { get; set; }
@@ -18,8 +20,9 @@ namespace prog2_Proj1_FirstPlayable_chrisFrench0259182_260213
 
         public (int, int) _min_max_x = (1, 55);
         public (int, int) _min_max_y = (1, 24);
-        protected Character(int x, int y, int attack, char symbol, int hp, ConsoleColor color)
+        protected Character(string Name, int x, int y, int attack, char symbol, int hp, ConsoleColor color)
         {
+            _name = Name;
             _x = x; 
             _y = y;
             _attack = attack;

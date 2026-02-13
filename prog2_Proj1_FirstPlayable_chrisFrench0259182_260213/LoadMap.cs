@@ -15,7 +15,7 @@ namespace prog2_Proj1_FirstPlayable_chrisFrench0259182_260213
         public void MapLoader()
         {
             try
-            {
+            {// recovers map from text file and stores it to an array  hasa check in case of file recovery issue
                 Maps = File.ReadAllLines(filepath1);
                 Console.Clear(); // Ensure screen is fresh
 
@@ -40,8 +40,8 @@ namespace prog2_Proj1_FirstPlayable_chrisFrench0259182_260213
             }
         }
 
-        // This is vital! When a player moves off a tile, call this to put the map back.
-        public void DrawTileAt(int x, int y)
+        
+        public void DrawTileAt(int x, int y)// redrawsorigional  map when tile isvacated by  player or enemy.
         {
             if (y < 0 || y >= Maps.Length || x < 0 || x >= Maps[y].Length) return;
 
@@ -52,18 +52,33 @@ namespace prog2_Proj1_FirstPlayable_chrisFrench0259182_260213
             Console.ResetColor();
         }
 
-        private void SetTileColor(char tile)
+        private void SetTileColor(char tile)// sets the tile colors for the map
         {
             switch (tile)
             {
-                case '#': Console.ForegroundColor = ConsoleColor.Gray; break;
+                case '#': Console.ForegroundColor = ConsoleColor.DarkGray; break;
                 case '%': Console.ForegroundColor = ConsoleColor.Red; break;
                 case 'G': Console.ForegroundColor = ConsoleColor.Cyan; break;
                 case '@': Console.ForegroundColor = ConsoleColor.Magenta; break;
                 case '|': Console.ForegroundColor = ConsoleColor.Yellow; break;
                 case '-': Console.ForegroundColor = ConsoleColor.Yellow; break;
                 case '+': Console.ForegroundColor = ConsoleColor.Yellow; break;
-                default: Console.ForegroundColor = ConsoleColor.White; break;
+                case '~': Console.ForegroundColor = ConsoleColor.DarkYellow; break;
+                case 'R': Console.ForegroundColor = ConsoleColor.Magenta; break;
+                case 'e': Console.ForegroundColor = ConsoleColor.Magenta; break;
+                case 't': Console.ForegroundColor = ConsoleColor.Magenta; break;
+                case 'u': Console.ForegroundColor = ConsoleColor.Magenta; break;
+                case 'r': Console.ForegroundColor = ConsoleColor.Magenta; break;
+                case 'n': Console.ForegroundColor = ConsoleColor.Magenta; break;
+                case 'o': Console.ForegroundColor = ConsoleColor.Magenta; break;
+                case 'N': Console.ForegroundColor = ConsoleColor.Magenta; break;
+                case 'V': Console.ForegroundColor = ConsoleColor.Magenta; break;
+                case 'W': Console.ForegroundColor = ConsoleColor.Magenta; break;
+                case 'H': Console.ForegroundColor = ConsoleColor.Magenta; break;
+                case 'E': Console.ForegroundColor = ConsoleColor.Magenta; break;
+              
+
+                default: Console.ForegroundColor = ConsoleColor.Gray; break;
             }
         }
 
