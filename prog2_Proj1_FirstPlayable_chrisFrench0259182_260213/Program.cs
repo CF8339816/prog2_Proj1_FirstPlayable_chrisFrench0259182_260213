@@ -15,7 +15,7 @@ namespace prog2_Proj1_FirstPlayable_chrisFrench0259182_260213
        
         static Player player = new Player("Hero", 3, 3, 15, '!', 50, ConsoleColor.Blue);
         static Enemy enemy = new Enemy("Gobbo",50, 4, 10, '&', 25, ConsoleColor.Green);
-       static Enemy enemy = new Enemy("Slobbo", 20, 24, 10, '&', 25, ConsoleColor.Green);
+       //static Enemy enemy = new Enemy("Slobbo", 20, 24, 10, '&', 25, ConsoleColor.Green);
         static LoadMap map = new LoadMap();
         static bool isPlaying = true;
         //static int output_X = 61;
