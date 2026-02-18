@@ -95,10 +95,12 @@ namespace prog2_Proj1_FirstPlayable_chrisFrench0259182_260213
                 switch (tarTile)
                 {
                     case '#':
+                        break;
                     case '|':
                     case '-':
                     case '+':
                     case '!':
+                        return false; // Walls and borders  player  and enemy are blocked
                     case '&':
                         return false; // Walls and borders  player  and enemy are blocked
 
